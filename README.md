@@ -38,8 +38,10 @@ This readme outlines the development of a web application called udim, udim is f
 4. Run the development server (refer to specific framework documentation).
 5. Access the application in your web browser (usually http://localhost:3000).
 
-### Contributing
-We welcome contributions to this project! Please refer to the CONTRIBUTING.md file (create one if it doesn't exist) for guidelines on code style, testing, and pull request submissions.
+### Authors
+1. Eneji Victor
+2.
+3.
 
 ### License
 

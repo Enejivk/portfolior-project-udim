@@ -1,0 +1,83 @@
+/** @format */
+
+
+.nav-bar-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 7rem;
+    border: 2px solid black;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.nav-bar-container a {
+    text-decoration: none;
+    font-size: 17px;
+    color: var(--black);
+    padding: 15px;
+}
+.nav-bar-container a:hover:not(.nav-sign-up a) {
+    text-decoration: underline;
+    text-underline-offset: 7px;
+}
+.nav-logo {
+    width: 147px;
+}
+.nav-logo img {
+    width: 100%;
+}
+.nav-menu-links,
+.nav-signUp_sign_in {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+.nav-sign-up a {
+    background-color: var(--main-color-blue);
+    color: white;
+}
+.nav-sign-up a:hover {
+    background-color: transparent;
+    color: var(--black);
+    border: 1px solid var(--main-color-blue);
+}
+.menu-link-small-screen{
+    display: none;
+}
+.nav-menu-links-small-screen{
+    position: fixed;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    flex-direction: column;
+    row-gap: 20px;
+    background-color: var(--main-color-blue);
+    padding: 20px;
+    width: 270px;
+}
+.menu-link-small-screen a{
+    color: white;
+}
+
+@media screen and (max-width: 1000px) {
+    .nav-menu-links{
+        display: none;
+    }
+    .nav-bar-container{
+         padding: 0 4rem;
+    }
+    .menu-link-small-screen{
+    display: block;
+}
+}
+@media screen and (max-width: 700px) {
+    .nav-signUp_sign_in{
+        display: none;
+    }
+       .nav-bar-container{
+         padding: 0 2rem;
+    }
+}
