@@ -1,4 +1,4 @@
-import { Header, Hero, About, CTA, Benefits } from './landingPage/index'
+import { Header, Hero, About, CTA, Benefits, Feature, Footer } from './landingPage/index'
 
 
 const App = () => {
@@ -9,6 +9,8 @@ const App = () => {
             <About />
             <CTA />
             < Benefits />
+            <Feature />
+            <Footer />
         </div>
     )
 }
