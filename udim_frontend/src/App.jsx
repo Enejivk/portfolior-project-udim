@@ -1,11 +1,14 @@
-import { Header } from './landingPage/index'
-import { Hero } from './landingPage/index'
+import { Header, Hero, About, CTA, Benefits } from './landingPage/index'
+
 
 const App = () => {
     return (
         <div>
             <Header />
             <Hero />
+            <About />
+            <CTA />
+            < Benefits />
         </div>
     )
 }
