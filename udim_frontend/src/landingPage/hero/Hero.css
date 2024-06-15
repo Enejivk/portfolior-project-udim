@@ -1,0 +1,26 @@
+.hero-section{
+    padding-top: 75px;
+}
+.hero-section{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.hero-section > * {
+    width: 50%;
+    overflow: hidden;
+}
+
+.hero-section-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+}
+.hero-section-image img{
+    width: 1500px;
+}
+.hero-section h1 {
+    font-size: 80px;
+}
