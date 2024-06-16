@@ -19,10 +19,10 @@ uri = 'mysql+mysqldb://{}:{}@{}/{}'.format(HBNB_MYSQL_USER,
 
 # Flask Application Setup
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = uri
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
-from api.v1.models import User, Group, Member, Message
+# from api.v1.models import User, Group, Member, Message, Donation, Debt
 @app.errorhandler(404)
 def not_found(error):
     """

@@ -89,9 +89,10 @@ class User(BaseModel):
     email = db.Column(db.String(128), nullable=False)
     password = db.Column(db.String(128), nullable=False)
     full_name = db.Column(db.String(128), nullable=False)
-    profile_image = db.Column(db.String(20), nullable=False, default='')
+    profile_image = db.Column(db.String(20), nullable=False, default='default.jpg')
     groups = db.relationship("Group", backref="user")
     messages = db.relationship("Message", backref="user")
+    member = db.relationship("Member", uselist=False, backref="user")
 
     def __init__(self, *args, **kwargs):
         """initializes user"""
@@ -123,6 +124,9 @@ class Group(BaseModel):
     user_id = db.Column(db.String(60), db.ForeignKey('users.id'), nullable=False)
     members = db.relationship("Member", secondary=group_member, backref="groups")
     messages = db.relationship("Message", backref="group")
+    donations = db.relationship("Donation", backref="group")
+    debts = db.relationship("Debt", backref="group")
+
 
     def __init__(self, *args, **kwargs):
         """initializes group"""
@@ -134,6 +138,10 @@ class Member(BaseModel):
     __tablename__ = 'members'
 
     name = db.Column(db.String(128), nullable=False)
+    admin = db.Column(db.Boolean, default=False)
+    user_id = db.Column(db.String(60), db.ForeignKey('users.id'), nullable=False)
+    donations = db.relationship("Donation", backref="member")
+    debts = db.relationship("Debt", backref="member")
 
     def __init__(self, *args, **kwargs):
         """initializes member"""
@@ -151,3 +159,22 @@ class Message(BaseModel):
     def __init__(self, *args, **kwargs):
         """initializes Message"""
         super().__init__(*args, **kwargs)
+
+
+class Donation(BaseModel):
+    """"""
+    __tablename__ = 'donations'
+    amount = db.Column(db.Float, nullable=False, default=0)
+    description = db.Column(db.String(1024), nullable=True)
+    group_id = db.Column(db.String(60), db.ForeignKey('groups.id'), nullable=False)
+    member_id = db.Column(db.String(60), db.ForeignKey('members.id'), nullable=False)
+
+
+class Debt(BaseModel):
+    """"""
+    __tablename__ = 'debts'
+    amount = db.Column(db.Float, nullable=False, default=0)
+    description = db.Column(db.String(1024), nullable=True)
+    group_id = db.Column(db.String(60), db.ForeignKey('groups.id'), nullable=False)
+    member_id = db.Column(db.String(60), db.ForeignKey('members.id'), nullable=False)
+
