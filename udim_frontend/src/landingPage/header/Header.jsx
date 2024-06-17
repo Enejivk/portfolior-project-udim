@@ -5,6 +5,8 @@ import { FiX } from "react-icons/fi";
 import logoBlack from '../../assets/logoBlack.png'
 import { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
 const Menu = () => (
     <>
         <p><a href="">About</a></p>
@@ -15,7 +17,8 @@ const Menu = () => (
 
 const SingUp = () => (
     <>
-        <p className='nav-sign-up'><a href="">Sign up</a></p>
+        <p className='nav-sign-up'>
+            <Link to='/signUp'>Sign up</Link></p>
         <p><a href="">Sign In</a></p>
     </>
 )
