@@ -4,7 +4,6 @@ import { FiX } from "react-icons/fi";
 
 import logoBlack from '../../assets/logoBlack.png'
 import { useState } from 'react';
-import { color } from 'chart.js/helpers';
 
 const Menu = () => (
     <>
