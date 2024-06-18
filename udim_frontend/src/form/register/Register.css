@@ -11,19 +11,23 @@
     flex: 1;
 }
 .signUp-container input,
-.signUp-container button {
+.signUp-container button[type="submit"] {
     width: 93%;
     padding: 17px 20px;
 }
+
 .signUp-container input {
     border: none;
     outline: none;
 }
-
+.submit-Btn {
+    background-color: red;
+    margin: 200px;
+}
 .form {
     text-align: center;
 }
-.signUp-container button {
+.signUp-container button[type="submit"] {
     width: 80%;
     margin: 0 auto;
     display: block;
@@ -40,20 +44,25 @@
     padding: 0 20px;
 }
 .input-container,
-.signUp-container button {
+.signUp-container button[type="submit"] {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.input-container > * {
+.input-container svg {
     color: rgb(141, 139, 139);
+    width: 20px;
 }
 .error {
     color: rgb(238, 64, 64);
     font-size: 14px;
 }
-.third_party_sign {
+.auth-icon-container {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
+}
+.third_party_sign p {
+    font-weight: 50;
     margin-top: 20px;
 }
 .auth-icons {
@@ -62,4 +71,21 @@
     padding: 20px;
     margin: 0 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+.text-content h1 {
+    width: 80%;
+    font-size: 50px;
+    margin: 0 auto;
+}
+.form-close {
+    width: 97%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 800px) {
+    .text-content {
+        display: none;
+    }
 }

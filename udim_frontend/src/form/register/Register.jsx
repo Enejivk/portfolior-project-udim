@@ -1,34 +1,44 @@
+import React from 'react'
 import { useState } from "react";
 import { PiIdentificationBadgeDuotone } from "react-icons/pi";
 import { AiOutlineMail } from "react-icons/ai";
 import { MdOutlineLockPerson } from "react-icons/md";
 import { MdOutlineLockReset } from "react-icons/md";
 import { FiEye } from "react-icons/fi";
-import { FcGoogle } from "react-icons/fc";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaMeta } from "react-icons/fa6";
+import { FiEyeOff } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
+import { Link } from 'react-router-dom';
+import { GoogleLoginBtn } from '../Oauth'
 
-import groupOfFriends from '../../assets/groupOfFriend.png'
 import * as Yup from "yup";
-import './Register.css'
+import './Register.css';
+
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
-        fullName: "",
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
         confirmPassword: "",
     });
 
     const [errors, setErrors] = useState({
-        fullName: "",
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
         confirmPassword: "",
     });
 
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
     const validationSchema = Yup.object({
-        fullName: Yup.string().required("Full Name is required"),
+        firstName: Yup.string().required("First Name is required"),
+        lastName: Yup.string().required("Last Name is required"),
         email: Yup.string().required("Email is required").email("Invalid email format"),
         password: Yup.string()
             .required("Password is required")
@@ -82,87 +92,116 @@ const RegistrationForm = () => {
     };
 
     return (
-        <main className="signUp-container">
-
-            <form className="form" onSubmit={handleSubmit}>
-                <h1>Get Started</h1>
-                <div>
-                    <div className="input-container">
-                        <PiIdentificationBadgeDuotone />
-                        <input
-                            type="text"
-                            name="fullName"
-                            value={formData.fullName}
-                            placeholder="Full Name"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    {errors.fullName && <div className="error">{errors.fullName}</div>}
+        <>
+            <Link to='/'>
+                <div className="form-close">
+                    <IoMdClose fontSize={35} />
                 </div>
+            </Link>
+            <main className="signUp-container">
+                <form className="form" onSubmit={handleSubmit}>
+                    <h1>Get Started</h1>
+                    <div>
+                        <div className="input-container">
+                            <PiIdentificationBadgeDuotone />
+                            <input
+                                type="text"
+                                name="firstName"
+                                value={formData.firstName}
+                                placeholder="First Name"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        {errors.firstName && <div className="error">{errors.firstName}</div>}
+                    </div>
+
+                    <div>
+                        <div className="input-container">
+                            <PiIdentificationBadgeDuotone />
+                            <input
+                                type="text"
+                                name="lastName"
+                                value={formData.lastName}
+                                placeholder="Last Name"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        {errors.lastName && <div className="error">{errors.lastName}</div>}
+                    </div>
 
 
-                <div>
-                    <div className="input-container">
-                        <AiOutlineMail />
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            placeholder="Email"
-                            onChange={handleChange}
-                        />
+                    <div>
+                        <div className="input-container">
+                            <AiOutlineMail />
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                placeholder="Email"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        {errors.email && <div className="error">{errors.email}</div>}
                     </div>
-                    {errors.email && <div className="error">{errors.email}</div>}
-                </div>
 
-                <div>
-                    <div className="input-container">
-                        <MdOutlineLockPerson />
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            placeholder="Password"
-                            onChange={handleChange}
-                        />
-                        <FiEye />
-                    </div>
-                    {errors.password && <div className="error">{errors.password}</div>}
-                </div>
+                    <div>
+                        <div className="input-container">
+                            <MdOutlineLockPerson />
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                name="password"
+                                value={formData.password}
+                                placeholder="Password"
+                                onChange={handleChange}
+                            />
+                            {showPassword ? <FiEye onClick={() => { setShowPassword(!showPassword) }} />
+                                : <FiEyeOff onClick={() => { setShowPassword(!showPassword) }} />
+                            }
 
-                <div>
-                    <div className="input-container">
-                        <MdOutlineLockReset />
-                        <input
-                            type="password"
-                            name="confirmPassword"
-                            value={formData.confirmPassword}
-                            placeholder="Confirm your Password"
-                            onChange={handleChange}
-                        />
-                        <FiEye />
+                        </div>
+                        {errors.password && <div className="error">{errors.password}</div>}
                     </div>
-                    {errors.confirmPassword && (
-                        <div className="error">{errors.confirmPassword}</div>
-                    )}
+
+                    <div>
+                        <div className="input-container">
+                            <MdOutlineLockReset />
+                            <input
+                                type={showConfirmPassword ? 'text' : 'password'}
+                                name="confirmPassword"
+                                value={formData.confirmPassword}
+                                placeholder="Confirm Password"
+                                onChange={handleChange}
+                            />
+                            {showConfirmPassword ? <FiEye onClick={() => { setShowConfirmPassword(!showConfirmPassword) }} />
+                                : <FiEyeOff onClick={() => { setShowConfirmPassword(!showConfirmPassword) }} />
+                            }
+                        </div>
+                        {errors.confirmPassword && (
+                            <div className="error">{errors.confirmPassword}</div>
+                        )}
+                    </div>
+                    <button type="submit">Sign Up</button>
+
+                    <div className="third_party_sign">
+                        <p>or continue with </p>
+
+                        <div className="auth-icon-container">
+                           < GoogleLoginBtn />
+                            <button className="auth-icons" type="button">
+                                <RiTwitterXLine color="#1DA1F2" />
+                            </button>
+                            <button className="auth-icons">
+                                <FaMeta color="#1877F2" />
+                            </button>
+                        </div>
+                        <p>Already have an account?<a href="">Login</a></p>
+                    </div>
+                </form>
+                <div className="text-content">
+                    <h1>Ready to experience the power of group giving and saving? Sign up for free today</h1>
                 </div>
-                <button type="submit">Sign Up</button>
-                <div className="third_party_sign">
-                    <div className="auth-icons">
-                        <FcGoogle />
-                    </div>
-                    <div className="auth-icons">
-                        <RiTwitterXLine color="#1DA1F2" />
-                    </div>
-                    <div className="auth-icons">
-                        <FaMeta color="#1877F2" />
-                    </div>
-                </div>
-            </form>
-            <section className="image-section">
-                <h1>Ready to experience the power of group giving and saving? Sign up for free today</h1>
-            </section>
-        </main>
+            </main>
+        </>
     );
 };
 
