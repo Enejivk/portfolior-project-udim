@@ -1,0 +1,7 @@
+api/__pycache__
+api/schemas/__pycache__
+udim_env
+api/resource/__pycache__
+api/.env
+api/views/__pycache__
+api/script/__pycache__
