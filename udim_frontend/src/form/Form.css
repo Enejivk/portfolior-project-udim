@@ -103,7 +103,8 @@
 
 @media screen and (max-width: 800px) {
     .signUp-container{
-        align-items:flex-start;
+        height: 65vh;
+
     }
     .third_party_sign p{
         font-size: 13px;
