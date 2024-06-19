@@ -11,7 +11,7 @@
     flex: 1;
 }
 .signUp-container input,
-.signUp-container button[type="submit"] {
+.signUp-container button {
     width: 93%;
     padding: 17px 20px;
 }
@@ -27,13 +27,31 @@
 .form {
     text-align: center;
 }
-.signUp-container button[type="submit"] {
+.signUp-container button{
     width: 80%;
     margin: 0 auto;
     display: block;
     border: none;
+    color: white;
+    background-color: black;
+    transition: .6s;
+}
+.signUp-container button[type='button']{
+    background-color: white;
+    color: rgb(0, 0, 0);
+    font-weight: 200;
+    margin: 10px auto;
+}
+.signUp-container button[type='submit']{
+    margin: 10px auto;
+}
+.signUp-container button[type='submit']:hover{
     background-color: black;
     color: white;
+}
+.signUp-container button[type='submit']:hover{
+    background-color: white;
+    color: black;
 }
 .input-container {
     width: 80%;
@@ -44,9 +62,10 @@
     padding: 0 20px;
 }
 .input-container,
-.signUp-container button[type="submit"] {
+.signUp-container button{
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 .input-container svg {
     color: rgb(141, 139, 139);
@@ -56,14 +75,12 @@
     color: rgb(238, 64, 64);
     font-size: 14px;
 }
-.auth-icon-container {
+.auth-icon-container button {
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
-}
-.third_party_sign p {
-    font-weight: 50;
-    margin-top: 20px;
+    gap: 10px;
+    background-color: white;
 }
 .auth-icons {
     background-color: white;

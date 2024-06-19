@@ -9,7 +9,7 @@ export const GoogleLoginBtn = () => {
 
     return (
         <button className="auth-icons" onClick={login} type='button'>
-            <FcGoogle />
+            <span>Sign Up with Google</span><FcGoogle />
         </button>
     ); 
 }

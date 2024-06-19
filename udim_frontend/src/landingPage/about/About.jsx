@@ -12,7 +12,7 @@ return <div className={`about-items`}>
 
 const About = () => {
     return (
-        <section className="about-section">
+        <section className="about-section" id='about-section'>
             <h1>About us</h1>
             <div className='about-items-container'>
                 {aboutData.map((dataItem) => {

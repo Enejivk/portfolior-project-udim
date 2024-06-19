@@ -5,15 +5,13 @@ import { AiOutlineMail } from "react-icons/ai";
 import { MdOutlineLockPerson } from "react-icons/md";
 import { MdOutlineLockReset } from "react-icons/md";
 import { FiEye } from "react-icons/fi";
-import { RiTwitterXLine } from "react-icons/ri";
-import { FaMeta } from "react-icons/fa6";
 import { FiEyeOff } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { GoogleLoginBtn } from '../Oauth'
 
 import * as Yup from "yup";
-import './Register.css';
+import '../Form.css';
 
 
 const RegistrationForm = () => {
@@ -183,18 +181,11 @@ const RegistrationForm = () => {
                     <button type="submit">Sign Up</button>
 
                     <div className="third_party_sign">
-                        <p>or continue with </p>
 
                         <div className="auth-icon-container">
                            < GoogleLoginBtn />
-                            <button className="auth-icons" type="button">
-                                <RiTwitterXLine color="#1DA1F2" />
-                            </button>
-                            <button className="auth-icons">
-                                <FaMeta color="#1877F2" />
-                            </button>
                         </div>
-                        <p>Already have an account?<a href="">Login</a></p>
+                        <p>Already have an account?<Link to='/login'>Login</Link></p>
                     </div>
                 </form>
                 <div className="text-content">

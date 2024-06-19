@@ -11,7 +11,7 @@ const FeatureItem = ({ Icon, heading, paragraph }) => (
 
 const Feature = () => {
     return (
-        <section className="feature-section">
+        <section className="feature-section" id='feature'>
             <h1>What we Offer</h1>
             <div className="feature-item-container">
                 {featureData.map((item) => {

@@ -16,7 +16,7 @@ const BenefitsItems = ({ id, heading, paragraph, image }) => {
 
 const Benefits = () => {
     return (
-        <section className="benefit-section">
+        <section className="benefit-section" id='benefit-section'>
             <h1>why chose us</h1>
 
             <div className="benefit-item-container">
