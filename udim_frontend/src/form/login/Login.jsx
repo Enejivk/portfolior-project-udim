@@ -124,7 +124,7 @@ const LoginForm = () => {
                         <div className="auth-icon-container">
                             < GoogleLoginBtn />
                         </div>
-                        <p>You don't have an account?<Link to='/signUp'>Sign Up</Link></p>
+                        <p>You don't have an account? <Link to='/signUp'>Sign Up</Link></p>
                     </div>
                 </form>
                 <div className="text-content">

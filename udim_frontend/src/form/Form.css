@@ -102,6 +102,13 @@
 }
 
 @media screen and (max-width: 800px) {
+    .signUp-container{
+        align-items:flex-start;
+    }
+    .third_party_sign p{
+        font-size: 13px;
+
+    }
     .text-content {
         display: none;
     }

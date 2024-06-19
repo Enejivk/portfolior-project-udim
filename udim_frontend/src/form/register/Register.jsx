@@ -185,7 +185,7 @@ const RegistrationForm = () => {
                         <div className="auth-icon-container">
                            < GoogleLoginBtn />
                         </div>
-                        <p>Already have an account?<Link to='/login'>Login</Link></p>
+                        <p>Already have an account? <Link to='/login'>Login</Link></p>
                     </div>
                 </form>
                 <div className="text-content">
