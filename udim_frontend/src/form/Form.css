@@ -103,7 +103,9 @@
 
 @media screen and (max-width: 800px) {
     .signUp-container{
-        height: 65vh;
+        height: auto;
+        padding-top: 45px;
+        padding-bottom: 200px;
 
     }
     .third_party_sign p{
