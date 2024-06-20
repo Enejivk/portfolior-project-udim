@@ -4,11 +4,11 @@ import { FiX } from "react-icons/fi";
 
 import logoBlack from '../../assets/logoBlack.png'
 import { useState } from 'react';
-
 import { Link } from 'react-router-dom';
 
 const Menu = () => (
     <>
+        <p><Link to='/home'>Home</Link></p>
         <p><a href="#about-section">About</a></p>
         <p><a href="#benefit-section">Benefit</a></p>
         <p><a href="#feature">Features</a></p>
