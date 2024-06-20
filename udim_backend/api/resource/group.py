@@ -1,10 +1,15 @@
+#!/usr/bin/python3
+from extensions import db
+from models.models import Group
+from api.schema.group import GroupSchema
 from flask import request
+from flask_jwt_extended import get_current_user, jwt_required
 from flask_restful import Resource, abort
-from api.models import Group
-from api.schemas.group import GroupSchema
-from api.extensions import db
+
+
 
 class GroupList(Resource):
+    method_decorators = [jwt_required()]
     def get(self):
         groups = Group.query.all()
         schema = GroupSchema(many=True)
@@ -12,9 +17,12 @@ class GroupList(Resource):
 
     def post(self):
         schema = GroupSchema()
-        validated_data = schema.load(request.json)
-
-        group = Group(**validated_data)
+        user = get_current_user()
+        print(user)
+        group = schema.load(request.json)
+        group.user_id = user.id
+        group.members.append(user)
+        group.admins.append(user)
         db.session.add(group)
         db.session.commit()
 
@@ -30,8 +38,6 @@ class GroupResource(Resource):
         schema = GroupSchema(partial=True)
         group = Group.query.get_or_404(group_id)
         group = schema.load(request.json, instance=group)
-
-        db.session.add(group)
         db.session.commit()
 
         return {"msg": "Group updated", "group": schema.dump(group)}

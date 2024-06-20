@@ -1,7 +1,8 @@
+#!/usr/bin/python3
 from marshmallow import validate, validates_schema, ValidationError
 from marshmallow.fields import String
-from api.extensions import ma
-from api.models import Group
+from extensions import ma
+from models.models import Group
 
 class GroupSchema(ma.SQLAlchemyAutoSchema):
     name = String(required=True, validate=[validate.Length(min=3)], error_messages={
@@ -19,4 +20,3 @@ class GroupSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Group
         load_instance = True
-        exclude = ["id"]

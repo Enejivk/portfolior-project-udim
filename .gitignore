@@ -2,6 +2,9 @@ api/__pycache__
 api/schemas/__pycache__
 udim_env
 api/resource/__pycache__
-api/.env
+.env
 api/views/__pycache__
-api/script/__pycache__
+api/script
+tests
+api/schema/__pycache__
+__pycache__

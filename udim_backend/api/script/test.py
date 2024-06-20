@@ -1,5 +1,5 @@
-from api.app import db, app
-from api.models import User, Group, Donation, Debt
+from app import db, app
+from api.models.models import User, Group, Donation, Debt
 def test1():
     i = 0
     for group in Group.query.all():
