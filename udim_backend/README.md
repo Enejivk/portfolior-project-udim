@@ -40,7 +40,7 @@ This readme outlines the development of a web application called udim, udim is f
 
 ### Authors
 1. Eneji Victor
-2.
+2. Peace Amaka
 3.
 
 ### License

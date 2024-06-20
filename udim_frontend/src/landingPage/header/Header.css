@@ -4,8 +4,7 @@
 .nav-bar-container {
     display: flex;
     justify-content: space-between;
-    padding: 0 7rem;
-    border: 2px solid black;
+    padding: 0 5rem;
     align-items: center;
     position: fixed;
     top: 0;

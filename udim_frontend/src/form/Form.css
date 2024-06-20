@@ -1,0 +1,118 @@
+/** @format */
+
+.signUp-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--grey-color);
+    justify-content: center;
+    height: 100vh;
+}
+.signUp-container > * {
+    flex: 1;
+}
+.signUp-container input,
+.signUp-container button {
+    width: 93%;
+    padding: 17px 20px;
+}
+
+.signUp-container input {
+    border: none;
+    outline: none;
+}
+.submit-Btn {
+    background-color: red;
+    margin: 200px;
+}
+.form {
+    text-align: center;
+}
+.signUp-container button{
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    border: none;
+    color: white;
+    background-color: black;
+    transition: .6s;
+}
+.signUp-container button[type='button']{
+    background-color: white;
+    color: rgb(0, 0, 0);
+    font-weight: 200;
+    margin: 10px auto;
+}
+.signUp-container button[type='submit']{
+    margin: 10px auto;
+}
+.signUp-container button[type='submit']:hover{
+    background-color: black;
+    color: white;
+}
+.signUp-container button[type='submit']:hover{
+    background-color: white;
+    color: black;
+}
+.input-container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
+    background-color: white;
+    padding: 0 20px;
+}
+.input-container,
+.signUp-container button{
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+.input-container svg {
+    color: rgb(141, 139, 139);
+    width: 20px;
+}
+.error {
+    color: rgb(238, 64, 64);
+    font-size: 14px;
+}
+.auth-icon-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: white;
+}
+.auth-icons {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+.text-content h1 {
+    width: 80%;
+    font-size: 50px;
+    margin: 0 auto;
+}
+.form-close {
+    width: 97%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 800px) {
+    .signUp-container{
+        height: auto;
+        padding-top: 45px;
+        padding-bottom: 200px;
+
+    }
+    .third_party_sign p{
+        font-size: 13px;
+
+    }
+    .text-content {
+        display: none;
+    }
+}
