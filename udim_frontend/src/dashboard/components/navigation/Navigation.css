@@ -32,14 +32,13 @@
     border-bottom-left-radius: 30px;
 }
 
-.navigation ul li:hover,
-.navigation ul li.hovered {
-    background-color: var(--white);
+.navigation ul li:hover:not(.brand),
+.navigation ul li.hovered:not(.brand) {
+    background-color: var(--grey-color);
 }
 
 .navigation ul li:nth-child(1) {
     margin-bottom: 40px;
-    pointer-events: none;
 }
 
 .navigation ul li a {
@@ -77,8 +76,8 @@
     text-align: start;
     white-space: nowrap;
 }
-.navigation ul li:hover a::before,
-.navigation ul li.hovered a::before {
+.navigation ul li:hover:not(.brand) a::before,
+.navigation ul li.hovered:not(.brand) a::before {
     content: '';
     position: absolute;
     right: 0;
@@ -87,11 +86,11 @@
     height: 50px;
     background-color: transparent;
     border-radius: 50%;
-    box-shadow: 35px 35px 0 10px var(--white);
+    box-shadow: 35px 35px 0 10px var(--grey-color);
     pointer-events: none;
 }
-.navigation ul li:hover a::after,
-.navigation ul li.hovered a::after {
+.navigation ul li:hover:not(.brand) a::after,
+.navigation ul li.hovered:not(.brand) a::after {
     content: '';
     position: absolute;
     right: 0;
@@ -100,6 +99,6 @@
     height: 50px;
     background-color: transparent;
     border-radius: 50%;
-    box-shadow: 35px -35px 0 10px var(--white);
+    box-shadow: 35px -35px 0 10px var(--grey-color);
     pointer-events: none;
 }

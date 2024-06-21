@@ -15,7 +15,7 @@ import {
 
 
 const navNameAndIcon = [
-    { name: 'HOME', icon: MdSpaceDashboard },
+    { name: 'OVERVIEW', icon: MdSpaceDashboard },
     { name: 'MEMBERS', icon: GrGroup },
     { name: 'PROFILE', icon: MdPermIdentity },
     { name: 'FINANCE', icon: FaMoneyBillTrendUp },
