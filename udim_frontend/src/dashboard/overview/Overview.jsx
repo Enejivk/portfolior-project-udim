@@ -1,19 +1,15 @@
 
-import Sidebar from '../component/sidebar/Sidebar'
-import Main from '../component/mainContent/Main'
-import Navbar from '../component/navbar/Navbar'
-import LeftSideBar from '../component/LeftSideBar/LeftSideBar'
+import Navigation from '../components/navigation/Navigation';
+import Main from '../components/Main';
 import './Overview.css'
 
-const Overview = () => {
+function Overview() {
     return (
-        <main className='home-container'>
-            <Navbar />
-            <Sidebar />
+        <div className="container">
+            <Navigation />
             <Main />
-            <LeftSideBar />
-        </main>
-    )
+        </div>
+    );
 }
 
-export default Overview
+export default Overview;
