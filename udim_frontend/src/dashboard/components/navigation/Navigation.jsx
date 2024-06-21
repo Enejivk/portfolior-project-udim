@@ -1,6 +1,8 @@
 
 import './Navigation.css'
 import logoWhite from '../../../assets/logoWhite.png'
+import { Link } from 'react-router-dom'
+
 import {
     MdSpaceDashboard,
     MdPermIdentity,
@@ -10,6 +12,7 @@ import {
     IoMdNotifications,
     IoMdLogOut
 } from '../allIcon'
+
 
 const navNameAndIcon = [
     { name: 'HOME', icon: MdSpaceDashboard },
@@ -26,11 +29,11 @@ const Navigation = () => {
         <div className="navigation">
             <ul>
                 <li className="brand">
-                    <a href="#">
+                    <Link to='/'>
                         <span className="icon">
                             <img src={logoWhite} alt="" className='brandLogo'/>
                         </span>
-                    </a>
+                    </Link>
                     <div className="toggl">
                         {/* <IonIcon name="menu-outline" /> */}
                     </div>
