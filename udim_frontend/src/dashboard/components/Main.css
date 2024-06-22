@@ -77,3 +77,20 @@
   height: 100%;
   object-fit: cover;
 }
+@media (max-width: 991px) {
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+}
+@media (max-width: 480px) {
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}

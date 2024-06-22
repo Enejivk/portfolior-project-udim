@@ -9,8 +9,16 @@
     transition: 0.5s;
     overflow: hidden;
 }
-
-.brandLogo{
+/* ==========Brand========== */
+.brand {
+    display: flex;
+    align-items: center;
+    column-gap: 26px;
+}
+.brand .toggle {
+    display: none;
+}
+.brandLogo {
     width: 140px;
 }
 .navigation.active {
@@ -101,4 +109,29 @@
     border-radius: 50%;
     box-shadow: 35px -35px 0 10px var(--grey-color);
     pointer-events: none;
+}
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+ .brand .toggle {
+        display: flex;
+    }
+  
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
 }

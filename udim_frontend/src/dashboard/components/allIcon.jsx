@@ -6,6 +6,9 @@ import { TbZoomMoneyFilled } from "react-icons/tb";
 import { IoMdNotifications } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
 import { GiMoneyStack } from "react-icons/gi";
+import { FiAlignJustify } from "react-icons/fi";
+import { IoCloseSharp } from "react-icons/io5";
+
 const userLogin = "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 
 
@@ -19,4 +22,6 @@ export {
     IoMdLogOut,
     GiMoneyStack,
     userLogin,
+    FiAlignJustify,
+    IoCloseSharp
 }

@@ -45,3 +45,17 @@
 .cardBox .card:hover .iconBx {
   color: var(--white);
 }
+@media (max-width: 991px) {
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+}

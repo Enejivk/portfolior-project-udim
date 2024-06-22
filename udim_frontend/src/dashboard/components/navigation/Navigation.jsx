@@ -2,6 +2,8 @@
 import './Navigation.css'
 import logoWhite from '../../../assets/logoWhite.png'
 import { Link } from 'react-router-dom'
+import { useContext } from "react";
+import { ToggleContext } from '../../ContextWrapper'
 
 import {
     MdSpaceDashboard,
@@ -10,43 +12,45 @@ import {
     GrGroup,
     TbZoomMoneyFilled,
     IoMdNotifications,
-    IoMdLogOut
+    IoMdLogOut,
+    IoCloseSharp,
 } from '../allIcon'
 
 
 const navNameAndIcon = [
-    { name: 'OVERVIEW', icon: MdSpaceDashboard },
+    { name: 'OVERVIEW', icon: MdSpaceDashboard, link: "/home" },
     { name: 'MEMBERS', icon: GrGroup },
     { name: 'PROFILE', icon: MdPermIdentity },
-    { name: 'FINANCE', icon: FaMoneyBillTrendUp },
+    { name: 'FINANCE', icon: FaMoneyBillTrendUp, link: "/finances" },
     { name: 'DEBTORS', icon: TbZoomMoneyFilled },
     { name: 'NOTIFICATION', icon: IoMdNotifications },
     { name: 'LOGOUT', icon: IoMdLogOut },
 ]
 
 const Navigation = () => {
+    const { handleToggle, istoggleMenu } = useContext(ToggleContext)
     return (
-        <div className="navigation">
+        <div className={`navigation ${istoggleMenu ? 'active' : ''}`}>
             <ul>
                 <li className="brand">
+                    <div className="toggle">
+                        <IoCloseSharp color='white' onClick={handleToggle} />
+                    </div>
                     <Link to='/'>
                         <span className="icon">
-                            <img src={logoWhite} alt="" className='brandLogo'/>
+                            <img src={logoWhite} alt="" className='brandLogo' />
                         </span>
                     </Link>
-                    <div className="toggl">
-                        {/* <IonIcon name="menu-outline" /> */}
-                    </div>
                 </li>
 
                 {navNameAndIcon.map((IconName, index) => (
                     <li key={index}>
-                        <a href="#">
+                        <Link to={IconName?.link} >
                             <span className="icon">
-                                <IconName.icon fontSize={27}/>
+                                <IconName.icon fontSize={27} />
                             </span>
                             <span className="title">{IconName.name}</span>
-                        </a>
+                        </Link>
                     </li>
                 ))}
             </ul>

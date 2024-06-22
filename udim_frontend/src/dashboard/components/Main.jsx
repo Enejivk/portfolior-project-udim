@@ -1,14 +1,17 @@
-// components/Main.js
+import Details from './details/Details';
+import { ToggleContext } from '../ContextWrapper'
+import { useContext } from "react";
 import Topbar from './topbar/Topbar';
 import CardBox from './cardBox/CardBox';
-import Details from './details/Details';
 import './Main.css'
+
 const Main = () => {
+    const { handleToggle, istoggleMenu } = useContext(ToggleContext)
     return (
-        <div className="main">
-            <Topbar />
-            <CardBox />
-            <Details />
+        <div className={`main ${istoggleMenu ? 'active' : ''}`}>
+            <Topbar/>
+            <CardBox/>
+            <Details/>
         </div>
     );
 };
