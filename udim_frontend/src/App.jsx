@@ -4,6 +4,7 @@ import Register from './form/register/Register';
 import LoginForm from './form/login/Login'
 import {Overview} from './dashboard/overview/Overview'
 import Finances from './dashboard/finances/Finances'
+import Profile from './dashboard/profile/Profile'
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/home" element={<Overview />} />
                 <Route path="/finances" element={<Finances />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </Router>
     )

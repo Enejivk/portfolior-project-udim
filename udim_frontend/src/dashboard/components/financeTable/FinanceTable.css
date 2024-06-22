@@ -1,18 +1,26 @@
-table {
+table.finance {
   width: 100%;
   border-collapse: collapse;
   overflow-x: scroll;
 }
-th, td {
+.finance th, 
+.finance td {
   border: 1px solid black;
   padding: 8px;
   text-align: left;
 }
-th {
+.finance th {
   background-color: #f2f2f2;
 }
-img {
+table img {
   width: 50px;
   height: 50px;
+}
+.tableNameImage{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tableNameImage img{
   border-radius: 50%;
 }

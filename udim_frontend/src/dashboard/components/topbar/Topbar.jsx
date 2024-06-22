@@ -14,7 +14,7 @@ const Groups = () => {
     return (
         <div>
             <label>
-                Select Group:
+                Select Group  
                 <select value={selectedValue} onChange={handleChange}>
                     <option value="option1">Peace</option>
                     <option value="option2">Unity</option>
