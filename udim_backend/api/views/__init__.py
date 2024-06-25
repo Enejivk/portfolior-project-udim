@@ -48,7 +48,7 @@ from api.resource.group import GroupList, GroupResource
 from api.resource.user import UserList, UserResource
 from api.resource.donation import DonationList, DonationResource
 from api.resource.debt import DebtList, DebtResource
-from api.resource.group_user import UserGroupList
+from api.resource.group_user import UserGroupList, GroupMemberList, GroupAdminResource, GroupMemberResource
 
 app_auth = Blueprint("app_auth", __name__, url_prefix="/auth")
 app_view = Blueprint("app_view", __name__, url_prefix="/api")
@@ -63,7 +63,16 @@ api.add_resource(DonationList, "/donations")
 api.add_resource(DonationResource, "/donations/<int:donation_id>")
 api.add_resource(DebtList, "/debts")
 api.add_resource(DebtResource, "/debts/<int:debt_id>")
-api.add_resource(UserGroupList, "/user/<int:user_id>/groups")
+api.add_resource(UserGroupList, "/users/<int:user_id>/groups")
+api.add_resource(GroupMemberList, "/groups/<int:group_id>/members")
+api.add_resource(GroupMemberResource, "/groups/<int:group_id>/members/<int:user_id>")
+api.add_resource(GroupAdminResource, "/groups/<int:group_id>/admins/<int:user_id>")
+# api.add_resource(UserDonationList, "/users/<int:user_id>/donations")
+# api.add_resource(GroupDonationList, "/groups/<int:group_id>/donations
+# api.add_resource(GroupPaymentList, "/groups/<int:group_id>/payments")
+# api.add_resource(GroupPaymentResource, "/groups/<int:group_id>/payments/<int:payment_id>")
+# app_view.register_error_handler(ValidationError, handle_marshmallow_error)
+# app_auth.register_error_handler(ValidationError, handle_marshmallow_error)
 
 
 @app_auth.errorhandler(ValidationError)
@@ -71,13 +80,8 @@ api.add_resource(UserGroupList, "/user/<int:user_id>/groups")
 def handle_marshmallow_error(e):
     return make_response(jsonify({"error": e.messages}), 400)
 
-@app_auth.errorhandler(404)
-@app_view.errorhandler(404)
-def not_found(error):
-    """
-    Handle 404 errors by returning a JSON response indicating resource
-    not found.
-    """
-    return make_response(jsonify({"error": "Not found"}), 404)
+
 
 from api.views.auth import *
+from api.views.google_auth import *
+from api.views.me import *

@@ -79,9 +79,9 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
                        })
     email = String(required=True, validate=[validate.Email()])
 
-    payments = ma.Nested(PaymentSchema, many=True)
-    debts = ma.Nested(DebtSchema, many=True)
-    donations = ma.Nested(DonationSchema, many=True)
+    # payments = ma.Nested(PaymentSchema, many=True)
+    # debts = ma.Nested(DebtSchema, many=True)
+    # donations = ma.Nested(DonationSchema, many=True)
     # groups = ma.Nested(GroupSchema, many=True)
     
     @validates_schema
@@ -104,7 +104,6 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = User
         load_instance = True
-        include_relationships = False
         include_fk = True
         exclude = ["password", "updated_at"]
 

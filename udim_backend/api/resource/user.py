@@ -29,7 +29,7 @@ Usage:
 """
 
 from flask import request, jsonify
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import get_current_user, jwt_required
 from flask_restful import Resource
 from models.models import User, Group
 from api.schema.user import user_schema
@@ -95,7 +95,7 @@ class UserResource(Resource):
         """
         user = User.query.get_or_404(user_id)
         return {"user": user_schema.dump(user)}
-
+    
     def put(self, user_id):
         """
         Update a specific user by ID.

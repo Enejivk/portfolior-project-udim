@@ -44,8 +44,8 @@ class GroupSchema(ma.SQLAlchemyAutoSchema):
                       "invalid": "The group name is invalid and needs to be a \
 string",
                   })
-    payments = ma.Nested(PaymentSchema, many=True)
-    members = ma.Nested(UserSchema, many=True)
+    # payments = ma.Nested(PaymentSchema, many=True)
+    # members = ma.Nested(UserSchema, many=True)
     
     @validates_schema
     def validate_name(self, data, **kwargs):
