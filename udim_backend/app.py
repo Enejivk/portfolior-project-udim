@@ -1,6 +1,19 @@
 #!/usr/bin/python3
 
-# from config import Config
+"""
+Initialize a Flask application with extensions and blueprints.
+
+## Inputs
+- Flask application instance
+- Configuration object from `config`
+- Extensions: `db`, `bcrypt`, `ma`, `migrate`, `cors`, `jwt`
+- Blueprints: `app_view`, `app_auth`
+
+## Outputs
+- Running Flask application configured with extensions and blueprints.
+"""
+
+
 from api.views import app_view, app_auth
 from extensions import db, bcrypt, ma, migrate, cors, jwt
 from flask import Flask
