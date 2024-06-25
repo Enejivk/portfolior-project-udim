@@ -8,7 +8,8 @@ import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import { GoogleLoginBtn } from '../Oauth'
+import { GoogleLoginBtn } from '../Authentication/Oauth'
+import axios from './Api'
 
 import * as Yup from "yup";
 import '../Form.css';
@@ -52,17 +53,49 @@ const RegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
             await validationSchema.validate(formData, { abortEarly: false });
-            // Handle successful form submission
+
+            const response = await axios.post('/auth/register', 
+                JSON.stringify({first_name: formData.firstName, 
+                    last_name: formData.lastName, 
+                    email: formData.email, 
+                    password: formData.password}
+                ),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            )
+
+            console.log("Response", response.data);            
             console.log("Form data", formData);
             setErrors({});
+
+
         } catch (error) {
+            // Handle validation errors or Axios request errors
+            if (error.response) {
+                // Server responded with an error status (4xx or 5xx)
+                console.error('Server error:', error.response.data.error._schema[0]);
+                alert(error.response.data.error._schema[0])
+            } else if (error.request) {
+                // Request made but no response received
+                console.error('Request error:', error.request);
+            } else {
+                // Something happened in setting up the request that triggered an error
+                console.error('Request setup error:', error.message);
+            }
+
+            // Handle form validation errors if any
             const newErrors = {};
-            error.inner.forEach((err) => {
-                newErrors[err.path] = err.message;
-            });
-            setErrors(newErrors);
+            if (error.inner) {
+                error.inner.forEach((err) => {
+                    newErrors[err.path] = err.message;
+                });
+            }
+            setErrors(newErrors); // Update state with validation errors
         }
     };
 
