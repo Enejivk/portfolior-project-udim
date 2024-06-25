@@ -20,4 +20,4 @@ function Overview() {
     );
 }
 
-export { Overview };
+export default Overview ;

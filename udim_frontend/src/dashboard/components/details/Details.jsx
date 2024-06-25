@@ -23,9 +23,9 @@ const RecentOrders = () => {
                 <thead>
                     <tr>
                         <td>Name</td>
-                        <td>Price</td>
+                        <td>Amount</td>
                         <td>Payment</td>
-                        <td>Status</td>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -34,7 +34,6 @@ const RecentOrders = () => {
                             <td>{order.name}</td>
                             <td>{order.price}</td>
                             <td>{order.payment}</td>
-                            <td><span className={`status ${order.status.toLowerCase().replace(' ', '')}`}>{order.status}</span></td>
                         </tr>
                     ))}
                 </tbody>

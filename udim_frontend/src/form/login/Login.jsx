@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { PiIdentificationBadgeDuotone } from "react-icons/pi";
 import { AiOutlineMail } from "react-icons/ai";
 import { MdOutlineLockPerson } from "react-icons/md";
@@ -6,13 +6,16 @@ import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import { GoogleLoginBtn } from '../Oauth'
+import { GoogleLoginBtn } from '../Authentication/Oauth'
+import axios from '../Authentication/axios'
+import { ContextProvider } from '../../apiAndContext/AuthContext'
 
 import * as Yup from "yup";
 import '../Form.css';
 
 
 const LoginForm = () => {
+    const {auth, setAuth} = useContext(ContextProvider)
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -24,32 +27,61 @@ const LoginForm = () => {
     });
 
     const [showPassword, setShowPassword] = useState(false)
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
     const validationSchema = Yup.object({
         email: Yup.string().required("Email is required").email("Invalid email format"),
-        password: Yup.string()
-            .required("Password is required")
-            .min(8, "Password must be at least 8 characters")
-            .matches(/[!@#$%^&*(),.?":{}|<>]/, "Password must contain at least one symbol")
-            .matches(/[0-9]/, "Password must contain at least one number")
-            .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-            .matches(/[a-z]/, "Password must contain at least one lowercase letter"),
+        password: Yup.string().required("Password is required")
     });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
             await validationSchema.validate(formData, { abortEarly: false });
-            // Handle successful form submission
+
+            const response = await axios.post('/auth/login',
+                JSON.stringify(formData),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            )
+
+          
+            const refresh_token = response.data?.refresh_token;
+            const token = response.data?.access_token;
+
+            setAuth({ token, refresh_token });
+            console.log('from auth', auth)
             console.log("Form data", formData);
             setErrors({});
+
+
         } catch (error) {
+
+            // Handle validation errors or Axios request errors
+            if (error.response) {
+                // Server responded with an error status (4xx or 5xx)
+                console.error('Server error:', error.response.data.msg);
+                alert(error.response.data.msg)
+
+            } else if (error.request) {
+                // Request made but no response received
+                console.error('Request error:', error.request);
+
+            } else {
+                // Something happened in setting up the request that triggered an error
+                console.error('Request setup error:', error.message);
+            }
+
+            // Handle form validation errors if any
             const newErrors = {};
-            error.inner.forEach((err) => {
-                newErrors[err.path] = err.message;
-            });
-            setErrors(newErrors);
+            if (error.inner) {
+                error.inner.forEach((err) => {
+                    newErrors[err.path] = err.message;
+                });
+            }
+            setErrors(newErrors); // Update state with validation errors
         }
     };
 
