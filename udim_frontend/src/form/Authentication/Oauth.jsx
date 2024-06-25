@@ -5,7 +5,10 @@ import { FcGoogle } from "react-icons/fc";
 
 export const GoogleLoginBtn = () => {
     const login = useGoogleLogin({
-        onSuccess: tokenResponse => console.log(jwtDecode(tokenResponse)),
+        onSuccess: (tokenResponse) => {
+            const decodedToken = jwtDecode(tokenResponse.access_token);
+            console.log(decodedToken);
+        },
     });
 
     return (

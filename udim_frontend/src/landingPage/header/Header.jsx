@@ -1,6 +1,7 @@
 import './Header.css'
 import { FiAlignJustify } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
+import useAuth from '../../form/Authentication/useAuth';
 
 import logoBlack from '../../assets/logoBlack.png'
 import { useState } from 'react';
@@ -15,13 +16,32 @@ const Menu = () => (
     </>
 )
 
-const SingUp = () => (
-    <>
-        <p className='nav-sign-up'>
-            <Link to='/signUp'>Sign up</Link></p>
-        <p><Link to='/login'>Sign In</Link></p>
-    </>
-)
+const SignUp = () => {
+    const { auth, setAuth } = useAuth();
+    {
+        console.log('from header period', auth)
+    }
+    return (
+        <>
+            {auth.token ? (
+                <>
+                    <p className='nav-sign-up'>
+                        <a onClick={() => { setAuth({}) }}>Logout</a>
+                    </p>
+                </>
+            ) : (
+                <>
+                    <p className='nav-sign-up'>
+                        <Link to='/signUp'>Sign up</Link>
+                    </p>
+                    <p>
+                        <Link to='/login'>Sign In</Link>
+                    </p>
+                </>
+            )}
+        </>
+    );
+};
 const Header = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
 
@@ -34,7 +54,7 @@ const Header = () => {
                 <Menu />
             </div>
             <div className='nav-signUp_sign_in'>
-                <SingUp />
+                <SignUp />
             </div>
 
             {/* NAV BAR FOR TABLE AND MOBILE SCREEN */}
@@ -46,8 +66,7 @@ const Header = () => {
                     <div className='nav-menu-links-small-screen'>
                         <FiX color='#fff' fontSize={37} onClick={() => { setToggleMenu(!toggleMenu) }} />
                         <Menu />
-                        <p className='signUpSmallScreen'><Link to='/signUp'>Sign up</Link></p>
-                        <p ><Link to='/login'>Sign In</Link></p>
+                        <SignUp />
                     </div>
                 }
 
