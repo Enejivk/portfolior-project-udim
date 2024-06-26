@@ -1,26 +1,42 @@
 import axios from './axios';
+import { useEffect } from 'react';
 import useAuth from './useAuth';
 
 const useRefreshToken = () => {
     const { auth, setAuth } = useAuth();
     const existingToken = auth.refresh_token;
 
+    // Function to refresh token
     const refresh = async () => {
-        const response = await axios.post('/auth/refresh', {}, {
-            headers: {
-                'Authorization': `Bearer ${existingToken}`
-            },
-            withCredentials: true
-        });
+        try {
+            const response = await axios.post('/auth/refresh', {}, {
+                headers: {
+                    'Authorization': `Bearer ${existingToken}`
+                },
+                withCredentials: true
+            });
 
-        setAuth(prev => {
-            console.log(JSON.stringify(prev));
-            console.log(response.data.accessToken);
-            return { ...prev, token: response.data.access_token };
-        });
+            // Update auth state with new access token
+            setAuth(prevAuth => ({
+                ...prevAuth,
+                token: response.data.access_token
+            }));
 
-        return response.data.access_token;
+            return response.data.access_token;
+        } catch (error) {
+            console.error('Error refreshing token:', error);
+            // Handle error as needed
+            throw error;
+        }
     };
+
+    // Use useEffect to initialize auth state from localStorage
+    useEffect(() => {
+        const storedAuth = localStorage.getItem('auth');
+        if (storedAuth) {
+            setAuth(JSON.parse(storedAuth));
+        }
+    }, [setAuth]);
 
     return refresh;
 };
