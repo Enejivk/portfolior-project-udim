@@ -1,21 +1,25 @@
-import { useState, useContext } from "react";
-import { PiIdentificationBadgeDuotone } from "react-icons/pi";
+import { useState} from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { MdOutlineLockPerson } from "react-icons/md";
 import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GoogleLoginBtn } from '../Authentication/Oauth'
 import axios from '../Authentication/axios'
-import { ContextProvider } from '../../apiAndContext/AuthContext'
+import useAuth from "../Authentication/useAuth";
 
 import * as Yup from "yup";
 import '../Form.css';
 
 
 const LoginForm = () => {
-    const {auth, setAuth} = useContext(ContextProvider)
+    const { auth, setAuth } = useAuth()
+
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/home'
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -47,18 +51,14 @@ const LoginForm = () => {
                 }
             )
 
-          
             const refresh_token = response.data?.refresh_token;
             const token = response.data?.access_token;
-
             setAuth({ token, refresh_token });
-            console.log('from auth', auth)
-            console.log("Form data", formData);
+            navigate(from, {replace: true});
             setErrors({});
 
 
         } catch (error) {
-
             // Handle validation errors or Axios request errors
             if (error.response) {
                 // Server responded with an error status (4xx or 5xx)
@@ -109,7 +109,7 @@ const LoginForm = () => {
     };
 
     return (
-        <>
+        <> 
             <Link to='/'>
                 <div className="form-close">
                     <IoMdClose fontSize={35} />
