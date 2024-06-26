@@ -35,7 +35,7 @@ def login():
 
     user = User.query.filter_by(email=email).first()
     if user is None or not bcrypt.check_password_hash(user.password, password):
-        return jsonify({"msg": "invalid credentials"}), 400
+        return jsonify({"msg": "Invalid email and password"}), 400
 
     access_token = create_access_token(identity=user.id)
     refresh_token = create_refresh_token(identity=user.id)

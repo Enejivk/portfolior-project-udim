@@ -2,14 +2,15 @@
 
 # from config import Config
 from api.views import app_view, app_auth
-from extensions import db, bcrypt, ma, migrate, cors, jwt
+from extensions import db, bcrypt, ma, migrate, jwt
 from flask import Flask
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object("config")
 
 db.init_app(app)
-cors.init_app(app, resources={r"/api/*": {"origins": "http://localhost"}})
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:3000"}})
 bcrypt.init_app(app)
 migrate.init_app(app, db)
 ma.init_app(app)
