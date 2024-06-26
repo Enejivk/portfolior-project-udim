@@ -9,6 +9,7 @@ const LoginForm = lazy(() => import('./form/login/Login'));
 const Overview = lazy(() => import('./dashboard/overview/Overview'));
 const Finances = lazy(() => import('./dashboard/finances/Finances'));
 const Profile = lazy(() => import('./dashboard/profile/Profile'));
+const Logout = lazy(() => import('./dashboard/logout/Logout'));
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
                         <Route path="/home" element={<Overview />} />
                         <Route path="/finances" element={<Finances />} />
                         <Route path="/profile" element={<Profile />} />
+                        <Route path="/logout" element={<Logout />} />
                     </Route>
                 </Route>
             </Routes>

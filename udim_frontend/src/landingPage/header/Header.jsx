@@ -2,6 +2,7 @@ import './Header.css'
 import { FiAlignJustify } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
 import useAuth from '../../form/Authentication/useAuth';
+import LogoutButton from '../logoutButton/LogoutButton'
 
 import logoBlack from '../../assets/logoBlack.png'
 import { useState } from 'react';
@@ -26,7 +27,7 @@ const SignUp = () => {
             {auth.token ? (
                 <>
                     <p className='nav-sign-up'>
-                        <a onClick={() => { setAuth({}) }}>Logout</a>
+                        <LogoutButton />
                     </p>
                 </>
             ) : (

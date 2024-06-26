@@ -1,4 +1,4 @@
-import Group from '../../../form/Authentication/GetGroups'
+
 
 const ProfileDetails = () => {
  
@@ -8,7 +8,6 @@ const ProfileDetails = () => {
       <div className='profile-information'>
         <p><span>name</span><span>{}</span></p>
       </div>
-      <Group />
     </div>
   )
 }

@@ -24,7 +24,7 @@ const navNameAndIcon = [
     { name: 'FINANCE', icon: FaMoneyBillTrendUp, link: "/finances" },
     { name: 'DEBTORS', icon: TbZoomMoneyFilled },
     { name: 'NOTIFICATION', icon: IoMdNotifications },
-    { name: 'LOGOUT', icon: IoMdLogOut },
+    { name: 'LOGOUT', icon: IoMdLogOut, link: '/Logout' },
 ]
 
 const Navigation = () => {
