@@ -34,6 +34,7 @@ from models.models import Debt
 from api.schema.debt import DebtSchema
 from extensions import db
 
+
 class DebtList(Resource):
     def get(self):
         """

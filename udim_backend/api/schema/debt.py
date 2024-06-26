@@ -8,11 +8,12 @@ from marshmallow.fields import String, Float
 from extensions import ma
 from models.models import Debt
 
+
 class DebtSchema(ma.SQLAlchemyAutoSchema):
     """
     DebtSchema is a Marshmallow schema for serializing and deserializing Debt
     objects. It includes validation for amount, description, and user_id fields.
-    
+
     Attributes:
         amount (Float): The amount of the debt. It is required.
         description (String): The description of the debt. It is optional and

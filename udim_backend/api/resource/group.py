@@ -38,6 +38,7 @@ from flask import request
 from flask_jwt_extended import get_current_user, jwt_required
 from flask_restful import Resource, abort
 
+
 class GroupList(Resource):
     """
     Resource class for handling operations related to groups.
@@ -80,6 +81,7 @@ class GroupList(Resource):
 
         return {"msg": "Group created", "group": group_schema.dump(group)}
 
+
 class GroupResource(Resource):
     """
     Class representing a RESTful resource for managing group data.
@@ -94,6 +96,7 @@ class GroupResource(Resource):
         delete(self, group_id): Delete a specific group by ID.
     """
     method_decorators = [jwt_required()]
+
     def get(self, group_id):
         """
         Retrieve a specific group by ID.

@@ -10,6 +10,7 @@ from marshmallow.fields import String, Float
 from extensions import ma
 from models.models import Donation
 
+
 class DonationSchema(ma.SQLAlchemyAutoSchema):
     """
     DonationSchema is a Marshmallow schema for serializing and deserializing

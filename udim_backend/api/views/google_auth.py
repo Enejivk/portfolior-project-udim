@@ -9,9 +9,11 @@
 # import google.auth.transport.requests
 
 # app = Flask("Google Login App")
-# app.secret_key = "<Add your own unique secret key here>" # make sure this matches with that's in client_secret.json
+# app.secret_key = "<Add your own unique secret key here>" # make sure
+# this matches with that's in client_secret.json
 
-# os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1" # to allow Http traffic for local dev
+# os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1" # to allow Http traffic
+# for local dev
 
 # GOOGLE_CLIENT_ID = "<Add your own unique Google Client Id from the client_secret.json here>"
 # client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
@@ -77,4 +79,5 @@
 # @app.route("/protected_area")
 # @login_is_required
 # def protected_area():
-#     return f"Hello {session['name']}! <br/> <a href='/logout'><button>Logout</button></a>"
+# return f"Hello {session['name']}! <br/> <a
+# href='/logout'><button>Logout</button></a>"

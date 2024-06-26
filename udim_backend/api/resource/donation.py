@@ -1,6 +1,6 @@
 """
-This module provides RESTful API endpoints for managing Donation resources 
-using Flask-RESTful. It includes endpoints for retrieving, creating, updating, 
+This module provides RESTful API endpoints for managing Donation resources
+using Flask-RESTful. It includes endpoints for retrieving, creating, updating,
 and deleting donations.
 
 Classes:
@@ -33,6 +33,7 @@ from models.models import Donation
 from api.schema.donation import DonationSchema
 from extensions import db
 
+
 class DonationList(Resource):
     def get(self):
         """
@@ -61,6 +62,7 @@ class DonationList(Resource):
         db.session.commit()
 
         return {"msg": "Donation created", "donation": schema.dump(donation)}
+
 
 class DonationResource(Resource):
     def get(self, donation_id):

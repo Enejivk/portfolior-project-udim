@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module provides authentication routes for user registration, login, token 
+This module provides authentication routes for user registration, login, token
 refresh, and token revocation using Flask and Flask-JWT-Extended.
 
 Routes:
@@ -17,7 +17,7 @@ Functions:
     revoke_access_token(): Revokes the current access token.
     revoke_refresh_token(): Revokes the current refresh token.
     user_loader_callback(jwt_headers, jwt_payload): Loads a user from the JWT.
-    check_if_token_revoked(jwt_headers, jwt_payload): Checks if a token is 
+    check_if_token_revoked(jwt_headers, jwt_payload): Checks if a token is
         revoked.
 """
 
@@ -76,7 +76,8 @@ def login():
     refresh_token = create_refresh_token(identity=user.id)
     add_token_to_database(access_token)
     add_token_to_database(refresh_token)
-    return jsonify({"access_token": access_token, "refresh_token": refresh_token}), 200
+    return jsonify({"access_token": access_token,
+                    "refresh_token": refresh_token}), 200
 
 
 @app_auth.route("/refresh", methods=["POST"])

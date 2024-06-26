@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-This module provides RESTful API endpoints for managing User resources using 
-Flask-RESTful. It includes endpoints for retrieving, updating, and deleting 
+This module provides RESTful API endpoints for managing User resources using
+Flask-RESTful. It includes endpoints for retrieving, updating, and deleting
 users.
 
 Classes:
     UserList: Resource for handling requests to the /users endpoint.
-    UserResource: Resource for handling requests to the /users/<int:user_id> 
+    UserResource: Resource for handling requests to the /users/<int:user_id>
                   endpoint.
 
 Endpoints:
@@ -24,7 +24,7 @@ Imports:
     from extensions import db
 
 Usage:
-    This module should be registered with a Flask application instance to set 
+    This module should be registered with a Flask application instance to set
     up the API routes for user management.
 """
 
@@ -35,6 +35,7 @@ from models.models import User, Group
 from api.schema.user import user_schema
 from api.schema.group import group_schema
 from extensions import db
+
 
 class UserList(Resource):
     """
@@ -54,6 +55,7 @@ class UserList(Resource):
                 dict: A dictionary containing a list of users.
     """
     method_decorators = [jwt_required()]
+
     def get(self):
         """
         Retrieve a list of users. Optionally filter by first name.
@@ -69,6 +71,7 @@ class UserList(Resource):
         users = user_query.all()
         return {"results": user_schema.dump(users, many=True)}
 
+
 class UserResource(Resource):
     """
     Class representing a RESTful resource for managing user data.
@@ -83,6 +86,7 @@ class UserResource(Resource):
         delete(self, user_id): Delete a specific user by ID.
     """
     method_decorators = [jwt_required()]
+
     def get(self, user_id):
         """
         Retrieve a specific user by ID.
@@ -95,7 +99,7 @@ class UserResource(Resource):
         """
         user = User.query.get_or_404(user_id)
         return {"user": user_schema.dump(user)}
-    
+
     def put(self, user_id):
         """
         Update a specific user by ID.
@@ -104,7 +108,7 @@ class UserResource(Resource):
             user_id (int): The ID of the user to update.
 
         Returns:
-            dict: A dictionary containing a success message and the updated 
+            dict: A dictionary containing a success message and the updated
                   user data.
         """
         user = User.query.get_or_404(user_id)
@@ -126,4 +130,3 @@ class UserResource(Resource):
         db.session.delete(user)
         db.session.commit()
         return {"msg": "User deleted"}
-    

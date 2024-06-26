@@ -7,6 +7,7 @@ from extensions import ma
 from marshmallow import Schema, fields
 from models.models import Payment
 
+
 class PaymentSchema(ma.SQLAlchemyAutoSchema):
     """
     PaymentSchema is a Marshmallow schema for serializing and deserializing Payment
@@ -19,5 +20,6 @@ class PaymentSchema(ma.SQLAlchemyAutoSchema):
         model = Payment
         include_fk = True
         load_instance = True
+
 
 payment_schema = PaymentSchema()

@@ -1,7 +1,7 @@
 # api/resources/payment.py
 """
-This module provides RESTful API endpoints for managing Payment resources 
-using Flask-RESTful. It includes endpoints for retrieving, creating, updating, 
+This module provides RESTful API endpoints for managing Payment resources
+using Flask-RESTful. It includes endpoints for retrieving, creating, updating,
 and deleting payments.
 
 Classes:
@@ -66,7 +66,8 @@ class PaymentResource(Resource):
         for key, value in data.items():
             setattr(payment, key, value)
         db.session.commit()
-        return {"msg": "Payment updated", "payment": payment_schema.dump(payment)}
+        return {"msg": "Payment updated",
+                "payment": payment_schema.dump(payment)}
 
     def delete(self, payment_id):
         """
@@ -110,4 +111,5 @@ class PaymentListResource(Resource):
         payment = Payment(**data)
         db.session.add(payment)
         db.session.commit()
-        return {"msg": "Payment created", "payment": payment_schema.dump(payment)}
+        return {"msg": "Payment created",
+                "payment": payment_schema.dump(payment)}

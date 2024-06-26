@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
 """
-This module sets up the Flask application with RESTful API endpoints for 
-User, Group, Donation, and Debt resources. It also includes error handlers 
+This module sets up the Flask application with RESTful API endpoints for
+User, Group, Donation, and Debt resources. It also includes error handlers
 for validation and 404 errors.
 
 Blueprints:
-    app_auth: Blueprint for authentication-related routes with URL prefix 
+    app_auth: Blueprint for authentication-related routes with URL prefix
               "/auth".
     app_view: Blueprint for API-related routes with URL prefix "/api".
 
@@ -21,9 +21,9 @@ API Endpoints:
     /debts/<int:debt_id>: Endpoint for DebtResource.
 
 Error Handlers:
-    handle_marshmallow_error: Handles Marshmallow validation errors and 
+    handle_marshmallow_error: Handles Marshmallow validation errors and
                               returns a JSON response with error messages.
-    not_found: Handles 404 errors and returns a JSON response indicating 
+    not_found: Handles 404 errors and returns a JSON response indicating
                resource not found.
 
 Imports:
@@ -37,7 +37,7 @@ Imports:
     from api.views.auth import *
 
 Usage:
-    This module should be imported and registered with a Flask application 
+    This module should be imported and registered with a Flask application
     instance to set up the API routes and error handlers.
 """
 
@@ -65,8 +65,12 @@ api.add_resource(DebtList, "/debts")
 api.add_resource(DebtResource, "/debts/<int:debt_id>")
 api.add_resource(UserGroupList, "/users/<int:user_id>/groups")
 api.add_resource(GroupMemberList, "/groups/<int:group_id>/members")
-api.add_resource(GroupMemberResource, "/groups/<int:group_id>/members/<int:user_id>")
-api.add_resource(GroupAdminResource, "/groups/<int:group_id>/admins/<int:user_id>")
+api.add_resource(
+    GroupMemberResource,
+    "/groups/<int:group_id>/members/<int:user_id>")
+api.add_resource(
+    GroupAdminResource,
+    "/groups/<int:group_id>/admins/<int:user_id>")
 # api.add_resource(UserDonationList, "/users/<int:user_id>/donations")
 # api.add_resource(GroupDonationList, "/groups/<int:group_id>/donations
 # api.add_resource(GroupPaymentList, "/groups/<int:group_id>/payments")
@@ -80,8 +84,6 @@ api.add_resource(GroupAdminResource, "/groups/<int:group_id>/admins/<int:user_id
 def handle_marshmallow_error(e):
     return make_response(jsonify({"error": e.messages}), 400)
 
-
-
-from api.views.auth import *
+from api.views.user import *
 from api.views.google_auth import *
-from api.views.me import *
+from api.views.auth import *
