@@ -1,1 +1,63 @@
-raf
+/** @format */
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+.profile-image {
+    width: 20rem;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.profile-details {
+    width: 50%;
+}
+.profile-details > * {
+    margin: 10px 0;
+}
+
+.profile-details .edit-btn{
+    background-color: var(--main-color-blue);
+    color: white;
+    padding: 10px 20px;
+}
+
+.profile-details .edit-btn:hover{
+    background-color: var(--orange);
+}
+.profile-container form{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--grey-color);
+}
+
+.profile-container form > *{
+    margin: 10px 0;
+    padding: 10px;
+
+}
+.profile-container form > button{
+    background-color: var(--main-color-blue);
+    color: white;
+
+}
+@media screen and (max-width: 600px) {
+    .profile-container {
+        flex-direction: column !important;
+    }
+    .profile-image {
+        width: 80%;
+    }
+    .profile-details {
+        width: 80%;
+    }
+}
