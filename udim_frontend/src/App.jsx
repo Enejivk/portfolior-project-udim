@@ -10,6 +10,7 @@ const Overview = lazy(() => import('./dashboard/overview/Overview'));
 const Finances = lazy(() => import('./dashboard/finances/Finances'));
 const Profile = lazy(() => import('./dashboard/profile/Profile'));
 const Logout = lazy(() => import('./dashboard/logout/Logout'));
+const Debtors = lazy(() => import('./dashboard/debtors/Debtors'));
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
                         <Route path="/finances" element={<Finances />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/logout" element={<Logout />} />
+                        <Route path="/debtors" element={<Debtors />} />
                     </Route>
                 </Route>
             </Routes>

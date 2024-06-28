@@ -19,11 +19,11 @@ import {
 
 const navNameAndIcon = [
     { name: 'OVERVIEW', icon: MdSpaceDashboard, link: "/home" },
-    { name: 'MEMBERS', icon: GrGroup },
+    // { name: 'MEMBERS', icon: GrGroup },
     { name: 'PROFILE', icon: MdPermIdentity, link: '/profile' },
     { name: 'FINANCE', icon: FaMoneyBillTrendUp, link: "/finances" },
-    { name: 'DEBTORS', icon: TbZoomMoneyFilled },
-    { name: 'NOTIFICATION', icon: IoMdNotifications },
+    { name: 'DEBTORS', icon: TbZoomMoneyFilled, link: '/debtors' },
+    // { name: 'NOTIFICATION', icon: IoMdNotifications },
     { name: 'LOGOUT', icon: IoMdLogOut, link: '/Logout' },
 ]
 

@@ -37,7 +37,7 @@
 }
 
 .logout-container a {
-    background: #6b73ff;
+    background: var(--main-color-blue);
     color: white;
     border: none;
     padding: 15px 25px;
